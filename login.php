@@ -41,12 +41,12 @@ if($_SERVER["REQUEST_METHOD"] == 'POST') {
 
             } else {
 
-                echo 'la password non è corretta';
+                header("location: errorPassword.html");
             }
 
         } else {
 
-            echo 'non ci sono utenti con questa mail';
+            header("location: errorUser.html");
     
         }
 
