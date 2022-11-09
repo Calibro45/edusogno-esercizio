@@ -9,14 +9,35 @@ $password = $connection->real_escape_string($_POST['password']);
 
 $hashedPass = password_hash($password, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO utenti(nome, cognome, email, password) VALUES('$name', '$surname', '$email', '$hashedPass')";
+$query = "SELECT * FROM utenti WHERE email = '$email'";
 
-if($connection->query($sql) === true) {
+
+if($result = $connection->query($query)) {
+
+    if($result->num_rows == 1) {
+
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+
+        if($row['email'] === $email) {
+
+            header("location: errorRegistered.html");
+        }
+
+    } else {
+
+        $sql = "INSERT INTO utenti(nome, cognome, email, password) VALUES('$name', '$surname', '$email', '$hashedPass')";
     
-    header("location: login.html");
+        if($connection->query($sql) === true) {
+            
+            header("location: login.html");
+    
+        } else {
+    
+            echo 'errore';
+        }
+    }
 
-} else {
-
-    echo 'errore';
 }
+
+
 
