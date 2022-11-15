@@ -5,12 +5,18 @@ const surname = document.getElementById('surname');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 
+let validate = false;
+
 // call event on form 
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    checkInputs()
+    checkInputs();
+
+    if(validate) {
+        form.submit();
+    }
 
 })
 
@@ -25,7 +31,6 @@ function checkInputs() {
 
     isEmpty(nameValue, userName, 'Il Nome');
     isEmpty(surnameValue, surname, 'Il Cognome');
-    isEmpty(passwordValue, password, 'La Password');
 
     if(emailValue === '') {
         isEmpty(emailValue, email, 'L\' E-mail');
@@ -36,7 +41,17 @@ function checkInputs() {
     } else {
         setSuccessFor(email);
     }
-    
+
+    if(passwordValue === '') {
+        isEmpty(passwordValue, password, 'La Password');
+
+    } else if(!isPassword(passwordValue)) {
+        setErrorFor(password, 'La Password non è valida');
+
+    } else {
+        setSuccessFor(password);
+    }
+
 }
 
 //** Function control empty */
@@ -65,6 +80,10 @@ function setErrorFor(input, msg) {
 
     // add class 
     formControl.className = 'form-control error';
+
+    if(validate) {
+        checkValid();
+    }
 }
 
 //** Function success */ 
@@ -74,12 +93,28 @@ function setSuccessFor(input) {
 
     // add class 
     formControl.className = 'form-control success';
+
+    if(!validate) {
+        checkValid();
+    }
 }
 
 //** Function valid email */
 
 function isEmail(email) {
     const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
-    return emailRegex.test(email);
 
+    return emailRegex.test(email);
+}
+
+//** Function valid passwrd */
+
+function isPassword(password) {
+    const passRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
+
+    return passRegex.test(password);
+}
+
+function checkValid() {
+    validate = !validate;
 }

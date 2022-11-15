@@ -46,6 +46,14 @@
                     <label for="password">Password</label>
                     <input type="password" id="password" placeholder="scrivila qui" name="password">
                     <small>Error msg</small>
+                    <ul class="password">
+                        <li>La Password deve contenere:</li>
+                        <li>1 Lettera Maiuscola</li>
+                        <li>1 Lettera Minuscola</li>
+                        <li>Almeno un Numero</li>
+                        <li>Almeno 8 Caratteri</li>
+                        <li>Può contenere caratteri speciali</li>
+                    </ul>
                 </div>
                     
                 <button type="submit" name="register">Registrati</button>

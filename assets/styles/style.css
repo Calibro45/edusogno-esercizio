@@ -163,6 +163,18 @@ form > button {
     visibility: visible;
 }
 
+.password {
+    list-style-type: none;
+    font-size: 11px;
+    padding: 5px;
+    margin-top: 5px;
+    color: #a0a0a0;
+}
+
+.password > li {
+    margin-bottom: 2px;
+}
+
 /* card style */
 
 .card-container {
