@@ -33,7 +33,11 @@ if(!isset($_SESSION['logged']) || $_SESSION['logged'] !== true) {
 
     <main>
         <div class="container-lg">
+
             <h1>Ciao <span class="user-name"><?=$_SESSION['name']?></span> ecco i tuo eventi</h1>
+            
+            <?php 
+            if($_SESSION['events']) { ?>
 
             <div class="card-container">
 
@@ -45,7 +49,7 @@ if(!isset($_SESSION['logged']) || $_SESSION['logged'] !== true) {
                     <button class="card-button">join</button>
                 </div>
                 
-            <?php } ?>
+            <?php }} else ?>
                 
             </div>
         </div>
