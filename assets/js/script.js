@@ -1,5 +1,4 @@
 // form, input field from DOM
-
 const form = document.getElementById('form');
 const userName = document.getElementById('name');
 const surname = document.getElementById('surname');
@@ -12,6 +11,7 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     checkInputs()
+
 })
 
 //** function control input values */
@@ -23,33 +23,34 @@ function checkInputs() {
     const emailValue = email.value.trim();
     const passwordValue = password.value.trim();
 
-    isEmpty(nameValue, userName);
+    isEmpty(nameValue, userName, 'Il Nome');
+    isEmpty(surnameValue, surname, 'Il Cognome');
+    isEmpty(passwordValue, password, 'La Password');
 
-    // if(nameValue === '') {
-    //     // showError
-    //     // add error class
-    //     setErrorFor(userName, 'Il nome è obbligatorio');
+    if(emailValue === '') {
+        isEmpty(emailValue, email, 'L\' E-mail');
 
-    // } else {
-    //     // add success class
-    //     setSuccessFor(userName);
-    // }
+    } else if(!isEmail(emailValue)) {
+        setErrorFor(email, 'La mail non è valida');
+
+    } else {
+        setSuccessFor(email);
+    }
     
 }
 
 //** Function control empty */
 
-function isEmpty(value, input) {
+function isEmpty(value, input, msg) {
     if(value === '') {
         // showError
         // add error class
-        setErrorFor(input, 'Il nome è obbligatorio');
+        setErrorFor(input, `${msg} è un campo obbligatorio`);
 
     } else {
         // add success class
         setSuccessFor(input);
     }
-
 }
 
 //** Function show error */
@@ -75,3 +76,10 @@ function setSuccessFor(input) {
     formControl.className = 'form-control success';
 }
 
+//** Function valid email */
+
+function isEmail(email) {
+    const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
+    return emailRegex.test(email);
+
+}
