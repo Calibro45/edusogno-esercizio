@@ -46,7 +46,9 @@ header {
 main {
     flex-grow: 1;
     background-color: var(--background);
-    margin-top: 110px
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 h1 {
@@ -69,13 +71,15 @@ button {
 label {
     font-weight: 700;
     font-size: 14px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+    padding: 5px;
 }
 
 input {
     outline: 0;
     border-width: 0 0 2px;
-    padding: 5px 5px;
+    padding: 5px;
     margin-bottom: 20px;
 }
 
@@ -98,8 +102,12 @@ form > button {
 }
 
 .container {
-    max-width: 720px;
-    margin: 100px auto;
+    flex: 0 1 720px;
+}
+
+.container-sm {
+    flex: 0 1 420px;
+
 }
 
 .container-lg {
@@ -119,6 +127,40 @@ form > button {
 
 .logout {
     color: white;
+}
+
+/* form style */
+
+.form-control {
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.form-control input {
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+
+.form-control.success input {
+    border-color: #2ecc71;
+}
+
+.form-control.error input {
+    border-color: #e74c3c;
+}
+
+.form-control small {
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    visibility: hidden;
+}
+
+.form-control.error small {
+    color: red;
+    visibility: visible;
 }
 
 /* card style */

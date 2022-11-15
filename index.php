@@ -22,20 +22,32 @@
         <div class="container">
             <h1>Crea il tuo account</h1>
             
-            <form class="card-wrap" method="post" action="./register.php">
+            <form class="card-wrap" method="post" action="./register.php" id="form">
 
-                <label for="name">inserisci il nome</label>
-                <input type="text" id="name" placeholder="Mario" name="name" required>
-    
-                <label for="surname">Inserisci il cognome</label>
-                <input type="text" id="surname" placeholder="Rossi" name="surname" required>
-    
-                <label for="emal">Inserisci l'e-mail</label>
-                <input type="text" id="email" placeholder="name@example.com" name="email" required>
-    
-                <label for="password">Inserisci la password</label>
-                <input type="password" id="password" placeholder="scrivila qui" name="password" required>
-    
+                <div class="form-control">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" placeholder="Mario" name="name">
+                    <small>Error msg</small>
+                </div>
+
+                <div class="form-control">
+                    <label for="surname">Cognome</label>
+                    <input type="text" id="surname" placeholder="Rossi" name="surname">
+                    <small>Error msg</small>
+                </div>
+
+                <div class="form-control">
+                    <label for="emal">E-mail</label>
+                    <input type="text" id="email" placeholder="name@example.com" name="email">
+                    <small>Error msg</small>
+                </div>
+
+                <div class="form-control">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="scrivila qui" name="password">
+                    <small>Error msg</small>
+                </div>
+                    
                 <button type="submit" name="register">Registrati</button>
                 
                 <a href="./login.html">Hai già un account? <span class="link">Accedi</span></a>
@@ -45,6 +57,7 @@
         </div>
     </main>
 
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
